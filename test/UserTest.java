@@ -1,5 +1,5 @@
 import static org.junit.Assert.*;
-import org.junit.*;
+import org.junit.Test;
 
 /**
  * Created by arnold on 16/4/16.
