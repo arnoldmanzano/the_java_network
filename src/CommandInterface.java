@@ -36,4 +36,11 @@ public class CommandInterface {
         currentUser.addFollowing(userToFollow);
         System.out.println("User " + username + " is now followed");
     }
+
+    public void subscriptionsCommand() {
+        ArrayList<User> users = currentUser.getFollowing();
+        for(User user : users) {
+            timelineCommand("timeline " + user.getName());
+        }
+    }
 }

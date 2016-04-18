@@ -56,4 +56,15 @@ public class CommandInterfaceTest {
         cmdInterface.followCommand("follow userToFollow");
         verify(userMock, times(1)).addFollowing(userToFollowMock);
     }
+
+    @Test
+    public void subscriptionsCommand() throws Exception {
+        cmdInterface.userCommand("user userToFollow");
+        cmdInterface.userCommand("user myUserName");
+        when(userCollectionMock.findUser("userToFollow")).thenReturn(userToFollowMock);
+        cmdInterface.followCommand("follow userToFollow");
+
+        cmdInterface.subscriptionsCommand();
+//        verify(userToFollowMock, times(1)).getPosts();
+    }
 }
