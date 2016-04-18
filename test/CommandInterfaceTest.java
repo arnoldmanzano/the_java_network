@@ -2,7 +2,6 @@ import org.junit.Before;
 import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
@@ -66,7 +65,5 @@ public class CommandInterfaceTest {
 
         cmdInterface.subscriptionsCommand();
         verify(userMock, times(1)).getFollowing();
-        verify(cmdInterface, times(1)).timelineCommand("timeline userToFollow");
-
     }
 }
