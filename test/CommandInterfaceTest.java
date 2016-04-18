@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
@@ -19,6 +20,7 @@ public class CommandInterfaceTest {
         System.setOut(new PrintStream(outContent));
         cmdInterface = new CommandInterface();
         cmdInterface.setUserCollection(userCollectionMock);
+        when(userCollectionMock.findOrCreateUser(anyString())).thenReturn(userMock);
     }
 
     @Test
@@ -30,10 +32,17 @@ public class CommandInterfaceTest {
 
     @Test
     public void postCommandTest() throws Exception {
-        when(userCollectionMock.findOrCreateUser(anyString())).thenReturn(userMock);
         cmdInterface.userCommand("user myUserName");
         cmdInterface.postCommand("post my message");
         verify(userMock, times(1)).addPost("my message");
         assertThat(outContent.toString(), containsString("Message posted successfully\n"));
+    }
+
+    @Test
+    public void timelineCommandTest() throws Exception {
+        cmdInterface.userCommand("user myUserName");
+        when(userCollectionMock.findUser(anyString())).thenReturn(userMock);
+        cmdInterface.timelineCommand("timeline myUserName");
+        verify(userMock, times(1)).getPosts();
     }
 }

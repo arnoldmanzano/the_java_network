@@ -21,4 +21,12 @@ public class CommandInterface {
         System.out.println("Message posted successfully");
     }
 
+    public void timelineCommand(String input) {
+        String username =  input.split(" ", 2)[1];
+        User user = userCollection.findUser(username);
+        ArrayList<Post> posts = user.getPosts();
+        for(Post post : posts) {
+            System.out.println(post.toString());
+        }
+    }
 }
