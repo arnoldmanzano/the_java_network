@@ -29,4 +29,11 @@ public class CommandInterface {
             System.out.println(post.toString());
         }
     }
+
+    public void followCommand(String input) {
+        String username =  input.split(" ", 2)[1];
+        User userToFollow = userCollection.findUser(username);
+        currentUser.addFollowing(userToFollow);
+        System.out.println("User " + username + " is now followed");
+    }
 }

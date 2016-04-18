@@ -45,4 +45,15 @@ public class CommandInterfaceTest {
         cmdInterface.timelineCommand("timeline myUserName");
         verify(userMock, times(1)).getPosts();
     }
+
+    private User userToFollowMock = mock(User.class);
+    @Test
+    public void followCommandTest() throws Exception {
+        cmdInterface.userCommand("user userToFollow");
+        cmdInterface.userCommand("user myUserName");
+
+        when(userCollectionMock.findUser("userToFollow")).thenReturn(userToFollowMock);
+        cmdInterface.followCommand("follow userToFollow");
+        verify(userMock, times(1)).addFollowing(userToFollowMock);
+    }
 }
