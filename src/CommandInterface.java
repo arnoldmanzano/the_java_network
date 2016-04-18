@@ -15,4 +15,10 @@ public class CommandInterface {
         System.out.println("Logged in as " + username);
     }
 
+    public void postCommand(String input) {
+        String message =  input.split(" ", 2)[1];
+        currentUser.addPost(message);
+        System.out.println("Message posted successfully");
+    }
+
 }
