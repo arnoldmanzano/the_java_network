@@ -20,9 +20,12 @@ public class UserCollection {
     }
 
     public User createUser(String username) {
-        User user = new User(username);
+        User user = makeUser(username);
         users.add(user);
         return user;
     }
 
+    public User makeUser(String username) {
+        return new User(username);
+    }
 }
