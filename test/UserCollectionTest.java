@@ -6,7 +6,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
-
 public class UserCollectionTest {
 
     private UserCollection userCollection;
@@ -34,4 +33,19 @@ public class UserCollectionTest {
         assertEquals(userToFind, userMock);
     }
 
+    @Test
+    public void findOrCreateUserTest_createNewUser() throws Exception {
+        assertTrue(userCollection.getUsers().isEmpty());
+        userCollection.findOrCreateUser("new_user_1");
+        assertFalse(userCollection.getUsers().isEmpty());
+    }
+
+    @Test
+    public void findOrCreateUserTest_findExistingUser() throws Exception {
+        userCollection.createUser("old_user");
+        when(userMock.getName()).thenReturn("old_user");
+        User userToFind = userCollection.findOrCreateUser("old_user");
+        assertEquals(userToFind, userMock);
+        assertEquals(userCollection.getUsers().size(), 1);
+    }
 }
