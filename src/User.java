@@ -1,15 +1,25 @@
-/**
- * Created by arnold on 16/4/16.
- */
+import java.util.ArrayList;
+
 public class User {
 
-    private int[] posts;
+    private String name;
+    private ArrayList<Post> posts;
 
-    public User() {
-        this.posts = new int[]{};
+    public User(String name) {
+        this.posts = new ArrayList<>();
+        this.name = name;
     }
 
-    public int[] view_timeline() {
+    public void addPost(String message) {
+        posts.add(new Post(message));
+    }
+
+    public ArrayList<Post> getPosts() {
         return posts;
     }
+
+    public String getName() {
+        return name;
+    }
+
 }
