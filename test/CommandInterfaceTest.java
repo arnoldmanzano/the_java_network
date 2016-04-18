@@ -65,6 +65,8 @@ public class CommandInterfaceTest {
         cmdInterface.followCommand("follow userToFollow");
 
         cmdInterface.subscriptionsCommand();
-//        verify(userToFollowMock, times(1)).getPosts();
+        verify(userMock, times(1)).getFollowing();
+        verify(cmdInterface, times(1)).timelineCommand("timeline userToFollow");
+
     }
 }

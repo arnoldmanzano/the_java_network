@@ -1,5 +1,11 @@
 ##### the_java_network
-- simple tweeting/messaging command line app built in java
+- console-based social networking application (similar to Twitter) implemented in java with the features below.
+
+###### Features:
+- User creating: a new user called Spike can be created
+- Posting: Spike can publish messages to a personal timeline
+- Reading: Spike can view Nikesh’s timeline
+- Following: Leo can subscribe to Spike and Nikesh's timelines, and view an aggregated list of all subscriptions
 
 ###### Usage
 commands available
@@ -9,8 +15,14 @@ post <message>
 timeline <username>
 follow <username>
 subscriptions  #print timelines of users you are following
+exit
 ```
 
+###### TODO
+1. Input sanitation, the program is easily breakable by inputting missing arguments to commands.
+2. Refactor a many things. :)
+
+###### Sample log
 ```
 Welcome to the_java_network
 > user arnold
@@ -38,5 +50,5 @@ User spike is now followed
 > subscriptions
 this is arnold's message
 this is spike's message
->
+> exit
 ```
